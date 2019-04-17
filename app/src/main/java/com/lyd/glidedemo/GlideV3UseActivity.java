@@ -4,8 +4,6 @@ import android.os.Bundle;
 import android.support.v7.app.AppCompatActivity;
 import android.widget.ImageView;
 
-import com.lyd.glidev3.GlideImageUtils;
-
 public class GlideV3UseActivity extends AppCompatActivity {
 
     private ImageView imgDefault;
@@ -16,7 +14,7 @@ public class GlideV3UseActivity extends AppCompatActivity {
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_glide_v3_use);
+        setContentView(R.layout.activity_glide_use);
         initView();
         initGlideUse();
     }
@@ -37,7 +35,7 @@ public class GlideV3UseActivity extends AppCompatActivity {
 
         //GlideImageUtils.getInstance().loadRoundImage(App.getMyApplicationContext(), R.drawable.default_head_round, url, imgRound);
 
-        GlideImageUtils.getInstance().loadBlurImage(App.getMyApplicationContext(), R.drawable.default_img, url, imgBlur);
+        //GlideImageUtils.getInstance().loadBlurImage(App.getMyApplicationContext(), R.drawable.default_img, url, imgBlur);
 
     }
 }

@@ -1,10 +1,11 @@
-package com.lyd.glidev3;
+package com.lyd.glidev4;
 
 import android.content.Context;
 import android.widget.ImageView;
 
 import com.bumptech.glide.Glide;
-import com.bumptech.glide.load.resource.bitmap.CenterCrop;
+import com.bumptech.glide.load.resource.bitmap.RoundedCorners;
+import com.bumptech.glide.request.RequestOptions;
 
 
 /**
@@ -32,13 +33,12 @@ public class GlideImageUtils {
      */
     public void loadImage(Context context, int errorResId, String imagePath, ImageView imageView) {
         Glide.with(context)
-                .load(imagePath)
                 .asBitmap()
                 .placeholder(errorResId <= 0 ? R.drawable.default_img : errorResId)
                 .error(errorResId <= 0 ? R.drawable.default_img : errorResId)
+                .load(imagePath)
                 .into(imageView);
     }
-
 
     /**
      * 加载圆形图片
@@ -49,12 +49,19 @@ public class GlideImageUtils {
      * @param imageView
      */
     public void loadCircleImage(Context context, int errorResId, String imagePath, ImageView imageView) {
+        //        Glide.with(context)
+        //                .load(imagePath)
+        //                .placeholder(errorResId <= 0 ? R.drawable.default_img : errorResId)
+        //                .error(errorResId <= 0 ? R.drawable.default_img : errorResId)
+        //                .apply(RequestOptions.bitmapTransform(new CircleCrop()))
+        //                .into(imageView);
+
+        RequestOptions requestOptions = RequestOptions.circleCropTransform();
         Glide.with(context)
                 .load(imagePath)
-                .asBitmap()
                 .placeholder(errorResId <= 0 ? R.drawable.default_img : errorResId)
                 .error(errorResId <= 0 ? R.drawable.default_img : errorResId)
-                .transform(new CenterCrop(context), new GlideCircleTransform(context))
+                .apply(requestOptions)
                 .into(imageView);
     }
 
@@ -68,14 +75,26 @@ public class GlideImageUtils {
      * @param imageView
      */
     public void loadRoundImage(Context context, int errorResId, String imagePath, ImageView imageView) {
+        //设置图片圆角角度
+        RoundedCorners roundedCorners = new RoundedCorners(40);
+        RequestOptions options = RequestOptions.bitmapTransform(roundedCorners);
+
         Glide.with(context)
                 .load(imagePath)
-                .asBitmap()
                 .placeholder(errorResId <= 0 ? R.drawable.default_img : errorResId)
                 .error(errorResId <= 0 ? R.drawable.default_img : errorResId)
-                .transform(new CenterCrop(context), new GlideRoundTransform(context))
+                .apply(options)
                 .into(imageView);
+
+
+        //        Glide.with(context)
+        //                .load(imagePath)
+        //                .placeholder(errorResId <= 0 ? R.drawable.default_img : errorResId)
+        //                .error(errorResId <= 0 ? R.drawable.default_img : errorResId)
+        //                .apply(RequestOptions.bitmapTransform(new RoundedCorners(40)))
+        //                .into(imageView);
     }
+
 
     /**
      * 高斯模糊
@@ -87,11 +106,11 @@ public class GlideImageUtils {
      */
     public void loadBlurImage(Context context, int errorResId, String imagePath, ImageView imageView) {
         Glide.with(context)
-                .load(imagePath)
                 .asBitmap()
                 .placeholder(errorResId <= 0 ? R.drawable.default_img : errorResId)
                 .error(errorResId <= 0 ? R.drawable.default_img : errorResId)
-                .transform(new GlideBlurTransformation(context))// 高斯模糊处理
+                .apply(RequestOptions.bitmapTransform(new GlideBlurTransformation(context)))
+                .load(imagePath)
                 .into(imageView);
     }
 
