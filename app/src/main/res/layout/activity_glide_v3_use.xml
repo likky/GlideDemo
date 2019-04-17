@@ -1,0 +1,54 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+              android:layout_width="match_parent"
+              android:layout_height="match_parent"
+              android:orientation="vertical"
+              android:paddingLeft="10dp"
+              android:paddingRight="10dp">
+
+    <TextView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="普通图片"/>
+
+    <ImageView
+        android:id="@+id/img_default"
+        android:layout_width="120dp"
+        android:layout_height="120dp"
+        android:src="@drawable/default_head"/>
+
+    <TextView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="圆形图片"/>
+
+    <ImageView
+        android:id="@+id/img_circle"
+        android:layout_width="120dp"
+        android:layout_height="120dp"
+        android:src="@drawable/default_head_circle"/>
+
+    <TextView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="圆角图片"/>
+
+    <ImageView
+        android:id="@+id/img_round"
+        android:layout_width="120dp"
+        android:layout_height="120dp"
+        android:src="@drawable/default_head_round"/>
+
+    <TextView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="高斯模糊"/>
+
+    <ImageView
+        android:id="@+id/img_blur"
+        android:layout_width="120dp"
+        android:layout_height="120dp"
+        android:src="@drawable/default_head_round"/>
+
+
+</LinearLayout>
